@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "name": "dailyworkplan",
+  "version": "1.0.0",
+  "description": "Daily work plan and status to monitor the project",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "Pratik",
+    "Singh"
+  ],
+  "author": "Pratik Singh",
+  "license": "ISC"
+}
