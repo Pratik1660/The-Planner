@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>
+            <%=locals.title%>
+        </title>
+        <script src="https://kit.fontawesome.com/748ceb699c.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/js/pdf.js"></script>
+        <link rel="stylesheet" href="/css/home.css">  
+    </head>
+
+    <body>
+        <div id="pdf">
+        <h1>The Planner (Daily Work Plan)</h1>
+        <div id="task-list-container">
+            <ul>
+
+                <% for(let i of task_list){%>
+                    <li class="task">
+                        <input type="checkbox" id=<%=i._id%> ${task.done ? 'checked': ''} class="custom-checkbox">
+                     
+
+                        <div class="details">
+                        <p><%=i.task%></p>
+                        <p><%=i.supervisor%></p>
+                        </div>
+
+                        <div class="delete-button">
+                            <a href="/delete-task/?id=<%=i._id%>">
+                            <i class="fa-solid fa-trash delete"></i>
+                            </a>
+                        </div>
+
+                        
+
+                    </li>
+                    <%
+                }%>
+
+            </ul>
+        </div>
+
+        <!--created form and setup method as post-->
+        <form id="new-tasklist-form" action="/create-tasklist" method="post">
+            <input type="text" name="task" placeholder="Enter Task" required>
+            <input type="text" name="supervisor" placeholder="Enter supervisor name" required>
+
+            <button type="submit">Add task</button>
+            <span id="total-tasks">Total tasks: <%=tasklength%></span>
+            <span id="completed-tasks">Completed tasks: <%=taskchecked%> </span>
+
+        </form>
+
+    </div>
+    <div>
+    <button style="background-color: lightgreen;" onclick="generatePDF()">Download Report</button></div>
+
+    </body>
+</html>
